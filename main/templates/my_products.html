@@ -1,0 +1,15 @@
+{% extends 'nav.html' %}
+
+{% block title %} {{user}}'s Products {% endblock %}
+
+{% block content %}
+{% for product in products %}
+
+<h3>{{ product.name }}</h3>
+<a href='{% url "view_product" product.id %}'><img src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 200px; height:auto;"></a>
+<p>{{ product.price }}</p>
+
+<button><a href="{% url 'delete_my_product' product.id %}">Delete</a></button>
+
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'nav.html' %}
+
+{% block title %} Cart {% endblock %}
+
+{% block content %}
+    <h2>Cart</h2>
+    <p>User: {{ cart.user.username }}</p>
+    <ul>
+        {% for item in cart_items %}
+            <li>
+                <h4>{{ item.product.name }}</h4> - Quantity: <b>{{ item.quantity }}</b>
+                <img src='{{ item.product.image.url }}' style='width: 100px; height: auto;'><br>
+                {% if item.quantity >= 1 %}
+                    <a href="{% url 'sub_from_cart' item.product.id %}">Remove 1 Item</a>
+                    <a href="{% url 'del_from_cart' item.product.id %}">Remove Entry</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <form method="post" action="{% url 'save_to_orders'%}">
+        {% csrf_token %}
+        
+        <button type="submit" value="Checkout"> Checkout </button>
+    </form>
+
+{% endblock %}

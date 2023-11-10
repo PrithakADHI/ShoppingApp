@@ -1,0 +1,18 @@
+{% extends 'nav.html' %}
+
+{% block title %} Product - {{ product.name }} {% endblock %}
+
+{% block content %}
+<h3>{{ product.name }}</h3>
+<img src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 200px; height:auto;">
+<p><b>{{ product.price }}</b></p>
+<p> From: {{ product.user }}</p>
+{% if product.user != user %}
+<button><a href="{% url 'buy_product' product.id %}">Buy</a></button>
+{% endif %}
+
+{% if product.user == user %}
+<button><a href="{% url 'delete_my_product' product.id %}">Delete</a></button>
+{% endif %}
+
+{% endblock %}

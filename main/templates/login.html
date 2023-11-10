@@ -1,0 +1,23 @@
+{% extends 'nav.html' %}
+
+{% block title %} Login {% endblock %}
+
+{% block content %}
+
+    {% if messages %}
+    {% for message in messages %}
+    <ul class="messages">
+        {{ message }}
+    {% endfor %}
+    </ul>
+    {% endif %}
+    <h2>Login</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username"><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+        <button type="submit" value="Login" onclick="a()"> Login </button>
+    </form>
+{% endblock %}
