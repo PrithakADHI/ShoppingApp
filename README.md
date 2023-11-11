@@ -10,7 +10,7 @@
 <h3> MacOS </h3>
 <ul>
   <li> Download/Clone the Repository and go to ShoppingApp Directory </li>
-  <li> In terminal, type: source ./bin/activate </li>
+  <li> Open Terminal in the directory and type: source ./bin/activate </li>
   <li> Then, type: python manage.py runserver </li>
   <li> Now, the website should be up and running in localhost:8000 </li>
 </ul>
