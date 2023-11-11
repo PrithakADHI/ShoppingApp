@@ -5,14 +5,13 @@
 {% block content %}
 
 <div style="display: flex; flex-wrap: wrap;">
-    {% if product == null %}
-    <h3> Oops. Looks like no one has posted a product yet. Please add one.</h3> 
-    {% endif %}
 {% for product in products %}
     <div style="border: 0.12px solid black; padding: 10px; margin-right: 15px;">
+        <div class='w3-center'>
         <h3>{{ product.name }}</h3>
         <p>From: {{ product.user.username }}</p>
-        <a href='{% url "view_product" product.id %}'><img src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 200px; height:auto;"></a> <br>
+        
+        <a href='{% url "view_product" product.id %}'><img src="{{ product.image.url }}" alt="{{ product.name }}" style="height: 150px; width:auto;"></a> <br>
         <p>Price: <b>{{ product.price }}</b></p>
         {% if user.is_authenticated %}
             {% if product.user != user %}
@@ -20,6 +19,7 @@
             <button><a href="{% url 'buy_product' product.id %}">Buy</a></button>
             {% endif %}
         {% endif %}
+        </div>
     </div>
 {% endfor %}
 </div>
